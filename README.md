@@ -1,2 +1,2 @@
 # KamikazeLab-Hackaton
-** Basic application for kamikazelab Hackaton **
+**Basic application for kamikazelab Hackaton**
