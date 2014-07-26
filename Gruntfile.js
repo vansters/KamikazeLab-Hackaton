@@ -134,6 +134,9 @@ module.exports = function (grunt) {
   grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
 
+  // Our-Code "Add sass compiler Nodejs module."
+  // grunt.loadTasks('node_modules/grunt-contrib-sass/tasks');
+
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -142,11 +145,21 @@ module.exports = function (grunt) {
       dev: {
         files: [
           {
-          expand: true,
-          cwd: './assets',
-          src: ['**/*.!(coffee)'],
-          dest: '.tmp/public'
-        }
+            expand: true,
+            cwd: './assets',
+            src: ['**/*.!(coffee)'],
+            dest: '.tmp/public'
+          },
+          { '.tmp/public/js/lib/jquery.js': './bower_components/jquery/dist/jquery.min.js' },
+          { '.tmp/public/js/lib/jquery.min.map': './bower_components/jquery/dist/jquery.min.map' },
+          { '.tmp/public/js/lib/underscore.js': './bower_components/underscore/underscore.js' },
+
+          { '.tmp/public/js/lib/angular.min.js': './bower_components/angular/angular.min.js' },
+          { '.tmp/public/js/lib/angular.min.js.map': './bower_components/angular/angular.min.js.map' },
+          { '.tmp/public/js/lib/angular-route.min.js': './bower_components/angular-route/angular-route.min.js' },
+          { '.tmp/public/js/lib/angular-route.min.js.map': './bower_components/angular-route/angular-route.min.js.map' },
+          { '.tmp/public/js/lib/angular-resource.min.js': './bower_components/angular-resource/angular-resource.min.js' },
+          { '.tmp/public/js/lib/angular-resource.min.js.map': './bower_components/angular-resource/angular-resource.min.js.map' }
         ]
       },
       build: {
@@ -201,6 +214,29 @@ module.exports = function (grunt) {
         ]
       }
     },
+
+    // Our-Code "Add sass task definitionslogic."
+    // sass: {
+    //   dev: {
+    //     options: {
+    //       style: 'expanded' //Set your prefered style for development here.
+    //     },
+    //     files: [{
+    //       expand: true,
+    //       cwd: 'assets/styles/',
+    //       src: ['*.scss', '*.sass'], // Feel free to remove a format if you do not use it.
+    //       dest: '.tmp/public/styles/',
+    //       ext: '.css'
+    //     }, {
+    //       expand: true,
+    //       cwd: 'assets/linker/styles/',
+    //       src: ['*.scss', '*.sass'], // Feel free to remove a format if you do not use it.
+    //       dest: '.tmp/public/linker/styles/',
+    //       ext: '.css'
+    //     }
+    //     ]
+    //   }
+    // },
     
     coffee: {
       dev: {
@@ -408,6 +444,10 @@ module.exports = function (grunt) {
 
         // When assets are changed:
         tasks: ['compileAssets', 'linkAssets']
+      },
+      config: {
+        files: ['views/**/**'],
+        tasks: ['compileAssets', 'linkAssets']
       }
     }
   });
@@ -423,6 +463,7 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
+    //'sass:dev',     // Our-Code "Add sass compiler task to compileAssets Task."
     'copy:dev',    
     'coffee:dev'
   ]);
@@ -453,6 +494,7 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
+    //'sass:dev',   // Our-Code "Add sass compiler task to prod Task."
     'copy:dev',
     'coffee:dev',
     'concat',

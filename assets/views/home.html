@@ -1,0 +1,15 @@
+<!-- Home Page -->
+<section ng-controller="HomeController">
+	
+	<div ng-repeat="data in feedData | limitTo:3">
+
+		<h1>{[{ data.title }]}</h1>
+		<h3>{[{ data.author }]}</h3>
+		<h5>{[{ data.contentSnippet }]}</h5>
+		<img ng-src="{[{ data.img }]}">
+		<h5>{[{ data.publishedDate | date }]}</h5>
+		<hr>
+	</div>
+
+
+</section>

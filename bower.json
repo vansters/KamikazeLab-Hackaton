@@ -1,0 +1,25 @@
+{
+	"name": "NewSwipe",
+	"version": "0.0.1",
+	"authors": [
+    	"Mario Andrade (@TheVansters)",
+    	"Federico Clasing (@FedeClasing)",
+    	"Oscar Rubio (@oscar_dee)"
+  	],
+	"dependencies": {
+		"jquery": "1.11.0",
+	    "angular": "~1.2.16",
+	    "angular-resource": "~1.2.16",
+	    "angular-cookies": "~1.2.16",
+	    "angular-route": "~1.2.16",
+	    "angular-touch": "~1.2.16",
+	    "angular-animate": "~1.2.16",
+	    "angular-gestures": "latest",
+	    "normalize.css": "~3.0.1",
+	    "bootstrap": "3.0.3",
+	    "momentjs": "2.5.1",
+	    "underscore": "latest",
+	    "animate.css": "~3.1.1",
+	    "angulartics": "latest"
+	}
+}
