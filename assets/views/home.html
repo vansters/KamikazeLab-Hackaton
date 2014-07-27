@@ -1,5 +1,9 @@
 <!-- Home Page -->
-<section ng-controller="HomeController">
+<section ng-controller="HomeController" ng-init="initAplication()">
+
+    <button id="next" ng-click="categoriesHandle.slickNext()" ng-show="false"></button>
+    <button id="prev" ng-click="categoriesHandle.slickPrev()" ng-show="false"></button>
+    <button id="goTo" ng-click="categoriesHandle.slickGoTo(index)" ng-show="false"></button>
 
     <div class="header">
         <div class="logo">
@@ -27,27 +31,26 @@
         </div>
     </div>
 
-
-	<slick  slides-to-show=3 slides-to-scroll=1 init-onload=true data="categories">
+	<slick  ng-transclude settings="categoriesConfig" control="categoriesHandle">
 		<div ng-repeat="category in categories">
 			<h2>{[{ category }]}</h2>
 		</div>
 	</slick>	
 
     
-	<slick slides-to-show=3 slides-to-scroll=1 init-onload=true data="images">
+	<slick ng-transclude settings="newsConfig" control="newsHandle">
 
-		<div ng-repeat="thing in images">
+		<div ng-repeat="d in dat">
 			<div class="news">
-            	<div class="news-img"><img ng-src="{[{ images[$index] }]}"></div>
-            	<div class="title">{[{ titles[$index] }]}</div>
-            	<div class="date">{[{ dates[$index] | date }]}</div>
-            	<div class="description">{[{ descriptions[$index] }]}</div>
+            	<div class="news-img"><img ng-src="{[{ d.image }]}"></div>
+            	<div class="title">{[{ d.title }]}</div>
+            	<!-- <div class="date">{[{ dates[$index] | date }]}</div> -->
+            	<!-- <div class="description">{[{ descriptions[$index] }]}</div> -->
         	</div>
 		</div>
 
 	</slick>
-	
+
 </section> 
 
 
