@@ -83,8 +83,6 @@
 
         $scope.getSourceRss = function( url, source) {
 
-            console.log("Fuente :: " + source);
-
             $http.jsonp($scope.urlApiGoogle + encodeURIComponent(url))
                 .success(function(data, status, headers, config) {
                     $scope.images = [];
@@ -139,19 +137,97 @@
             }
         };
 
+        // PeerJs Connector ---------------------------------------
+
+        var conn,
+            peer = new Peer( makeid() , { key: 'zgy87w70m620529' } );
+  
+        peer.on('open', function(id){
+            $scope.idChannel = id;
+        });
+      
+        peer.on('connection', connect);
+        
+        function connect(c){
+            conn = c;
+            $scope.message = "Ahora estas conectado";
+            conn.on('data',function(data){
+                checkCommand(data);
+            });
+            conn.on('disconnect', disconnect);
+        }
+
+        function disconnect(){
+            alert("Ahora esta libre");
+        }
+
+        function checkCommand (command){
+            switch (command) {
+                case 'categoryNext':
+                    $('#next').click();   
+                break;
+            }
+        }
+      // $(document).ready(function(){
+      //   $('#connect').click(function(){
+      //     $('#progBar').css('width', '50%');
+      //     var c = peer.connect($('#rid').val());
+      //     c.on('open', function(){
+      //       connect(c);
+      //     });
+      //   });
+      //   $('#disconnect').click(function(){
+      //     $('#progBar').css('width', '50%');
+      //     disconnect();
+      //   });
+      //   $('#inputText').keypress(function(e){
+      //     var ev = e || window.event;
+      //     var asciiKey = ev.keyCode || ev.which;
+      //     text = String.fromCharCode(asciiKey);
+      //     //text = $('#inputText').val();
+      //     conn.send(text);
+      //   });
+
+      // });
+
+
+
+      function makeid() {
+        var text = "";
+        var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
+        // var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for( var i=0; i < 5; i++ ) {
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+          return text;
+      };
+
+
+
+        // // PeerJs Conector -------------------------------------
+        // var conn,
+        //     peer = new Peer('a5sw', { key: 'zgy87w70m620529' });
+
+        // peer.on('open', function(id){
+        //     console.log("Tenemos Conexion");
+        // });
+
+        // peer.on('connection', connect);
+
+        // function connect(c){
+        //     conn = c
+        //     console.log("Conexion con :: " + conn.peer);
+        //     conn.on('data',function(data){
+        //         console.log("Tenemos Data :: " + data);
+        //     });
+        //     conn.on('disconnect', disconnect);
+        // }
+
+        // function disconnect(){
+        //     console.log("Estas desconectado");
+        // }
+
+
     }]);
-
-// var h = new Object(); // or just {}
-// h['one'] = 1;
-// h['two'] = 2;
-// h['three'] = 3;
-
-// // show the values stored
-// for (var k in h) {
-//     // use hasOwnProperty to filter out keys from the Object.prototype
-//     if (h.hasOwnProperty(k)) {
-//         alert('key is: ' + k + ', value is: ' + h[k]);
-//     }
-// }
 
 }()); 

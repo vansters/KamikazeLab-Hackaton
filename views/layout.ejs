@@ -40,9 +40,25 @@
     <link rel="stylesheet" type="text/css" href="/styles/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/styles/mainScreenStyles.css">
 
+    <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+
   </head>
 
   <body>
+
+<!--     <h2 style="margin-left:30%;">Live Edit with PeerJS</h2>
+    Your PeerJS ID is: <span id="pid"></span><br><br>
+    Connect to peer: <input type="text" id="rid" placeholder="Someone's ID: ">
+    <input type="button" value="Connect" id="connect">
+    <input type="button" value="Disconnect" id="disconnect">
+    <br><br>
+
+    <div class="progress progress-striped active" style="width:25%;">
+      <div id="progBar" class="bar" style="width: 0%;"></div>
+    </div>
+
+    <textarea id="inputText" rows="30" style="width:45%;margin-left:20%;"></textarea> -->
+
 
     <!-- Include the view file for the current controller/route -->
     <%- body %>
@@ -84,12 +100,81 @@
     <script type="text/javascript" src="/js/lib/slick.js"></script>
     <script type="text/javascript" src="/js/lib/angular-slick.js"></script>
     <script type="text/javascript" src="/js/angular-slick-carousel.js"></script>
+    <!-- Load Mobile Detect -->
     <script type="text/javascript" src="/js/mobile-detect.min.js"></script>
+
+    <!-- Load Peer Web RTC Framework -->
+    <script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
 
     <!-- Load Our Scripts -->
     <script type="text/javascript" src="/js/angular-init.js"></script>
     <script type="text/javascript" src="/js/angular-config.js"></script>
     <script type="text/javascript" src="/js/angular-homeController.js"></script>
+    <script type="text/javascript" src="/js/angular-mobileController.js"></script>
+
+
+       <script type="text/javascript">
+      // var conn
+      //     peer = new Peer( makeid() , { key: 'zgy87w70m620529' } );
+      
+      //     peer.on('open', function(id){
+      //       $('#pid').text(id);
+      //     });
+          
+      // peer.on('connection', connect);
+      // function connect(c){
+      //   conn = c
+      //   $('#rid').val(conn.peer);
+      //   $('#rid').prop('disabled', true);
+      //   $('#progBar').width('100%');
+      //   conn.on('data',function(data){
+      //     $('#inputText').val($('#inputText').val()+data);
+      //   });
+      //   conn.on('disconnect', disconnect);
+      // }
+
+      // function disconnect(){
+      //   alert('You are no longer connected to the server!');
+      //   $('#rid').val("");
+      //   $('#rid').prop('disabled', false);
+      //   $('#progBar').width('0%');
+      //   $('#inputText').val("");
+      // }
+
+      // $(document).ready(function(){
+      //   $('#connect').click(function(){
+      //     $('#progBar').css('width', '50%');
+      //     var c = peer.connect($('#rid').val());
+      //     c.on('open', function(){
+      //       connect(c);
+      //     });
+      //   });
+      //   $('#disconnect').click(function(){
+      //     $('#progBar').css('width', '50%');
+      //     disconnect();
+      //   });
+      //   $('#inputText').keypress(function(e){
+      //     var ev = e || window.event;
+      //     var asciiKey = ev.keyCode || ev.which;
+      //     text = String.fromCharCode(asciiKey);
+      //     //text = $('#inputText').val();
+      //     conn.send(text);
+      //   });
+
+      // });
+
+
+
+      // function makeid() {
+      //   var text = "";
+      //   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      //   for( var i=0; i < 4; i++ )
+      //     text += possible.charAt(Math.floor(Math.random() * possible.length));
+      //     return text;
+      // };
+
+    </script>
 
 
 
