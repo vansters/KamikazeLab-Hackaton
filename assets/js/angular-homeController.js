@@ -18,6 +18,8 @@
             strategy:   [{'source': 'Alt1040',  'url': 'http://feeds.feedburner.com/celularis'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/altfoto'}]
         };
 
+        $scope.news = [];
+
         $scope.categories = [
             {
                 "name": "strategy",
@@ -63,7 +65,15 @@
                     $scope.activeC = $scope.categories[event.currentSlide+1];
                 }
 
-                console.log($scope.activeC);
+                var x = $scope.activeC.name;
+                if($scope.catagoriesInfo.hasOwnProperty(x) ){
+                    var aux = $scope.catagoriesInfo[x];
+                    _.each(aux, function(element, index) {
+                        // console.log(element);
+                        $scope.getSourceRss(element.url, element.source);
+                    });
+
+                }
             },
             pauseOnHover: true,
             slidesToShow: 3,
@@ -86,12 +96,18 @@
 
 
         $scope.initAplication = function () {
-            // $scope.activeC = $scope.categories[1];
+            $scope.activeC = $scope.categories[1];
+            var x = $scope.activeC.name;
             // console.log($scope.activeC);
-            var data = getCategoryData($scope.categories[$scope.categoryIndex]);
-            _.each(data, function(element, index) {
+            var aux = $scope.catagoriesInfo[x];
+            _.each(aux, function(element, index) {
                 $scope.getSourceRss(element.url, element.source);
             });
+            // console.log($scope.activeC);
+            // var data = getCategoryData($scope.categories[$scope.categoryIndex]);
+            // _.each(data, function(element, index) {
+            //     $scope.getSourceRss(element.url, element.source);
+            // });
         };
 
 
@@ -105,9 +121,9 @@
 
             $http.jsonp($scope.urlApiGoogle + encodeURIComponent(url))
                 .success(function(data, status, headers, config) {
-                    $scope.descriptions = [];
                     var x = data.responseData.feed.entries;
                     var dat = [];
+                    $scope.news = [];
                     _.each(x, function(element, index) {
                         $scope.news.push({
                             'image': getImage(element.content),
@@ -117,6 +133,7 @@
                             'description': element.contentSnippet
                         });
                     });
+                    // console.log($scope.news);
                 });
 
         };
@@ -175,6 +192,8 @@
         }
 
         function checkCommand (command){
+            // console.log($scope.activeC);
+
             switch (command) {
                 case 'categoryNext':
                     $('#next').click();

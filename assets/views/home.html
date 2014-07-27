@@ -40,15 +40,15 @@
             </div>
         </slick>
 
-        <div class="select-news">
+<!--         <div class="select-news">
             <div class="container-arrow">
                 <div class="arrow-left {[{ activeC }]}"></div>
                 <div class="arrow-right {[{ activeC }]}"></div>
             </div>
-        </div>
+        </div> -->
         
         <slick ng-transclude settings="newsConfig" control="newsHandle">
-            <div ng-repeat="new in news">
+            <div ng-repeat="new in news | limitTo:9">
                 <div class="container-news"> 
                     <div class="news">
                         <div class="news-img" ng-class="{'tech': activeCategory === 'Tecnología', 'design': activeCategory === 'Diseño', 'back': activeCategory === 'Programación', 'strategy': activeCategory === 'Estrategia'}"><img ng-src="{[{ new.image }]}"></div>
