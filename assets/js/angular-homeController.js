@@ -6,6 +6,7 @@
 
         // this.urlBase = 'http://feeds2.feedburner.com/thenextweb';
         this.urlBase = 'http://feeds.mashable.com/Mashable';
+        // this.urlBase = 'http://feeds.feedburner.com/TechCrunch/';
         this.urlApiGoogle = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=';
         this.feedDataAuthor = {};
         $scope.feedData = [];
