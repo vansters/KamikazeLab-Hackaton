@@ -32,10 +32,25 @@
 			$('#inputText').val("");
 		}
 
+		$scope.nextCategory = function() {
+			conn.send("categoryNext");
+		};
+
+		$scope.prevCategory = function() {
+			conn.send("categoryPrev");
+		};
+
+		$scope.nextNew = function() {
+			conn.send("newNext");
+		};
+
+		$scope.prevNew = function() {
+			conn.send("prevNew");
+		};
+
 		$(document).ready(function(){
 			$('#connect').click(function(){
-				$('#progBar').css('width', '50%');
-				var c = peer.connect($('#rid').val());
+				var c = peer.connect('acb123');
 				c.on('open', function(){
 					connect(c);
 				});

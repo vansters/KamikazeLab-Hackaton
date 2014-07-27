@@ -160,6 +160,8 @@ module.exports = function (grunt) {
           { '.tmp/public/js/lib/angular-route.min.js.map': './bower_components/angular-route/angular-route.min.js.map' },
           { '.tmp/public/js/lib/angular-resource.min.js': './bower_components/angular-resource/angular-resource.min.js' },
           { '.tmp/public/js/lib/angular-resource.min.js.map': './bower_components/angular-resource/angular-resource.min.js.map' },
+          { '.tmp/public/js/lib/angular-touch.min.js': './bower_components/angular-touch/angular-touch.min.js' },
+          { '.tmp/public/js/lib/angular-touch.min.js.map': './bower_components/angular-touch/angular-touch.min.js.map' },
 
           { '.tmp/public/styles/lib/slick.css': './bower_components/slick-carousel/slick/slick.css' },
           { '.tmp/public/js/lib/slick.js': './bower_components/slick-carousel/slick/slick.js' },

@@ -1,6 +1,13 @@
 <!-- Home Page -->
 <section ng-controller="MobileController">
 
+	Your PeerJS ID is: <span id="pid"></span><br><br>
+    Connect to peer: <input type="text" id="rid" placeholder="Someone's ID: ">
+    <input type="button" value="Connect" id="connect">
+    <input type="button" value="Disconnect" id="disconnect">
+    <br><br>
+
+
     <div class="mobile-remote">
         <div class="logo-mobile">
             <img src="images/logo2.png">
@@ -8,7 +15,7 @@
 
         <div class="home-division"><div class="division-line"></div></div>
 
-        <div class="category-mobile">
+        <div class="category-mobile" ng-swipe-left="nextCategory()" ng-swipe-right="prevCategory()">
             <div class="title">Categoría</div>
             <div class="swipe">
                 <img class="arrow-left" src="images/arrow-left.png">
@@ -22,7 +29,7 @@
 
         <div class="home-division"><div class="division-line2"></div></div>
         
-        <div class="news-mobile"> 
+        <div class="news-mobile" ng-swipe-left="nextNew()" ng-swipe-right="prevNew()"> 
             <div class="title">Noticias</div>
             <img src="images/news-mobile.png">
         </div>

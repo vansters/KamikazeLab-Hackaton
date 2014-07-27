@@ -5,20 +5,24 @@
     <button id="prev" ng-click="categoriesHandle.slickPrev()" ng-show="false"></button>
     <button id="goTo" ng-click="categoriesHandle.slickGoTo(index)" ng-show="false"></button>
 
+    <button id="nextNew" ng-click="newsHandle.slickNext()" ng-show="false"></button>
+    <button id="prevNew" ng-click="newsHandle.slickPrev()" ng-show="false"></button>
+    <button id="goToS" ng-click="newsHandle.slickGoTo(index)" ng-show="false"></button>
+
     <div class="header">
         <div class="logo">
             <img src="images/logo.png">
         </div>
 
         <!-- Message -->
-        <h4>{[{ message }]}</h4>
+        <!-- <h4>{[{ message }]}</h4> -->
 
         <div class="instructions">
             <div class="control"><span>Contrólalo</span> con tu smartphone</div>
             <img class="phone-control" src="images/instrutions-phone.png" alt="instrutions-phone" />
             <div class="go-to">
                 <div class="go">Entra a</div>
-                <div class="to">http://kmkz.com/not/<strong>{[{ idChannel }]}</strong></div>
+                <div class="to">http://kmkz.com/not/</div>
             </div>
         </div>
     </div>
@@ -27,9 +31,9 @@
         <slick  ng-transclude settings="categoriesConfig" control="categoriesHandle">
             <div ng-repeat="category in categories">
                 <div class="container-categories">
-                    <div class="categories design">
-                        <div class="icon"><img src="images/categories1.png"></div>
-                        <div class="title">{[{ category }]}</div>
+                    <div class="categories {[{category.name}]}">
+                        <div class="icon"><img ng-src="{[{category.img}]}"></div>
+                        <div class="title">{[{ category.text }]}</div>
                         <div class="rss">Mashable | The Next Web | Smashing Magazine | Awwwards</div>
                     </div>
                 </div>
@@ -38,8 +42,8 @@
 
         <div class="select-news">
             <div class="container-arrow">
-                <div class="arrow-left design"></div>
-                <div class="arrow-right design"></div>
+                <div class="arrow-left {[{ activeC }]}"></div>
+                <div class="arrow-right {[{ activeC }]}"></div>
             </div>
         </div>
         
@@ -47,7 +51,7 @@
             <div ng-repeat="new in news">
                 <div class="container-news"> 
                     <div class="news">
-                        <div class="news-img design"><img ng-src="{[{ new.image }]}"></div>
+                        <div class="news-img" ng-class="{'tech': activeCategory === 'Tecnología', 'design': activeCategory === 'Diseño', 'back': activeCategory === 'Programación', 'strategy': activeCategory === 'Estrategia'}"><img ng-src="{[{ new.image }]}"></div>
                         <div class="title">{[{ new.title }]}</div>
                         <div class="date">{[{ new.publishedDate | date:'EEEE, MMMM d, y' }]}</div>
                         <div class="description">{[{ new.description }]}</div>

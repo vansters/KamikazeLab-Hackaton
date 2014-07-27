@@ -16,22 +16,54 @@
             dev:        [{'source': 'Alt1040',  'url': 'http://feeds.hipertextual.com/alt1040'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/appleweblog-es'}],
             design:     [{'source': 'TutsPlus', 'url': 'http://design.tutsplus.com/posts.atom'}],
             strategy:   [{'source': 'Alt1040',  'url': 'http://feeds.feedburner.com/celularis'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/altfoto'}]
-        }
+        };
 
-        $scope.news = [];
-
-
-        $scope.basicCategories = ['Tecnología', 'Programación', 'Diseño', 'Estrategia'];
-        // $scope.basicCategories = ['Diseño'];
-        $scope.categories = [];
+        $scope.categories = [
+            {
+                "name": "strategy",
+                "text": "Estrategia",
+                "news": [],
+                "img": "images/icon-strategy.png"
+            },
+            {
+                "name": "tech",
+                "text": "Tecnología",
+                "news": [],
+                "img": "images/icon-tech.png"
+            },
+            {
+                "name": "design",
+                "text": "Diseño",
+                "news": [],
+                "img": "images/icon-design.png"
+            },
+            {
+                "name": "dev",
+                "text": "Programación",
+                "news": [],
+                "img": "images/icon-dev.png"
+            }
+        ];
+        // $scope.categories = [ {"name": "design", "text": "Tecnología, "}'Diseño', 'Tecnología', 'Estrategia', 'Programación']
 
         $scope.categoriesConfig = {
-            dots: false,
-            autoplay: true,
-            autoplaySpeed: 10000,
-            // centerMode: true,
+            infinite: true,
             onBeforeChange: function  (event) {
-                // console.log("Estoy Cambiando");
+                // console.log(event);
+            },
+            onAfterChange: function (event) {
+                // $scope.activeCategory = $scope.categories[event.currentSlide];
+                // console.log(event.currentSlide);
+                // console.log("Left :: " + $scope.activeCategory);
+                if ( _.isUndefined($scope.categories[event.currentSlide+1])) {
+                    // console.log("Center  :: " + $scope.categories[0]);
+                    $scope.activeC = $scope.categories[0];
+                } else {
+                    // console.log("Center :: " + $scope.categories[event.currentSlide+1]);
+                    $scope.activeC = $scope.categories[event.currentSlide+1];
+                }
+
+                console.log($scope.activeC);
             },
             pauseOnHover: true,
             slidesToShow: 3,
@@ -42,15 +74,10 @@
         };
 
         $scope.newsConfig = {
-            dots: false,
             autoplay: true,
             autoplaySpeed: 10000,
-            // centerMode: true,
-            onBeforeChange: function  (event) {
-                // console.log("Estoy Cambiando");
-            },
             pauseOnHover: true,
-            slidesToShow: 3,
+            slidesToShow: 3
         };
 
         $scope.newsHandle = {
@@ -59,19 +86,12 @@
 
 
         $scope.initAplication = function () {
-            $scope.categories = _.sample($scope.basicCategories, 4);
-            var data = getCategoryData($scope.categories[0]);
+            // $scope.activeC = $scope.categories[1];
+            // console.log($scope.activeC);
+            var data = getCategoryData($scope.categories[$scope.categoryIndex]);
             _.each(data, function(element, index) {
                 $scope.getSourceRss(element.url, element.source);
-                // console.log(p);
-                // console.log(p);
-                // console.log(element);
             });
-            // console.log(data);
-            // console.log($scope.dat);
-            // $scope.dat
-            // console.log($scope.categories);
-            // console.log($scope.dat);
         };
 
 
@@ -85,17 +105,10 @@
 
             $http.jsonp($scope.urlApiGoogle + encodeURIComponent(url))
                 .success(function(data, status, headers, config) {
-                    $scope.images = [];
-                    $scope.titles = [];
-                    $scope.dates = [];
                     $scope.descriptions = [];
                     var x = data.responseData.feed.entries;
                     var dat = [];
                     _.each(x, function(element, index) {
-                        $scope.images.push(getImage(element.content));
-                        $scope.titles.push(element.title);
-                        $scope.dates.push(element.publishedDate);
-                        $scope.descriptions.push(element.contentSnippet);
                         $scope.news.push({
                             'image': getImage(element.content),
                             'title': element.title,
@@ -140,7 +153,7 @@
         // PeerJs Connector ---------------------------------------
 
         var conn,
-            peer = new Peer( makeid() , { key: 'zgy87w70m620529' } );
+            peer = new Peer( 'acb123' , { key: 'zgy87w70m620529' } );
   
         peer.on('open', function(id){
             $scope.idChannel = id;
@@ -164,7 +177,16 @@
         function checkCommand (command){
             switch (command) {
                 case 'categoryNext':
-                    $('#next').click();   
+                    $('#next').click();
+                break;
+                case 'categoryPrev':
+                    $('#prev').click();
+                break;
+                case 'newNext':
+                    $('#nextNew').click();
+                break;
+                case 'prevNew':
+                    $('#prevNew').click();
                 break;
             }
         }
@@ -196,7 +218,7 @@
         var text = "";
         var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
         // var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        for( var i=0; i < 5; i++ ) {
+        for( var i=0; i < 4; i++ ) {
           text += possible.charAt(Math.floor(Math.random() * possible.length));
         }
           return text;
