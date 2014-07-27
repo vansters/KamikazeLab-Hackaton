@@ -9,6 +9,7 @@
         this.urlApiGoogle = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=';
         this.feedDataAuthor = {};
         $scope.feedData = [];
+        $scope.loQueSea = [1,2,3,4,5];
 
         $http.jsonp(this.urlApiGoogle + encodeURIComponent(this.urlBase))
             .success(function(data, status, headers, config) {

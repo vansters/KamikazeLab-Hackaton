@@ -20,6 +20,7 @@
 	    "momentjs": "2.5.1",
 	    "underscore": "latest",
 	    "animate.css": "~3.1.1",
-	    "angulartics": "latest"
+	    "angulartics": "latest",
+	    "angular-slick": "latest"
 	}
 }
