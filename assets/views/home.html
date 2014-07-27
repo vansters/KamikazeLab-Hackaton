@@ -17,37 +17,47 @@
     </div>
     
     <div class="container-news">
-        <div ng-repeat="data in feedData | limitTo:9">
-            <div class="news">
-                <div class="news-img"><img ng-src="{[{ data.img }]}"></div>
-                <div class="title">{[{ data.title }]}</div>
-                <div class="date">{[{ data.publishedDate | date }]}</div>
-                <div class="description">{[{ data.contentSnippet }]}</div>
+        <slick  slides-to-show=2 slides-to-scroll=1 center-mode=true init-onload=true data="categories">
+            <div ng-repeat="category in categories">
+                <div class="container-categories">
+                    <div class="categories design">
+                        <div class="icon"><img src="images/categories1.png"></div>
+                        <div class="title">{[{ category }]}</div>
+                        <div class="rss">Mashable | The Next Web | Smashing Magazine | Awwwards</div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </slick>
+
+        
+        <slick slides-to-show=3 slides-to-scroll=1 init-onload=true data="images">
+            <div ng-repeat="thing in images">
+                <div class="container-news"> 
+                    <div class="news">
+                        <div class="news-img design"><img ng-src="{[{ images[$index] }]}"></div>
+                        <div class="title">{[{ titles[$index] }]}</div>
+                        <div class="date">{[{ dates[$index] | date }]}</div>
+                        <div class="description">{[{ descriptions[$index] }]}</div>
+                        <div class="downloads">
+                            <img src="images/downloads.png">
+                            DESCARGADA <span>231</span> VECES
+                        </div>
+                        <div class="icon">
+                            <img src="images/mashable.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </slick> 
     </div>
 
-
-	<slick  slides-to-show=3 slides-to-scroll=1 init-onload=true data="categories">
-		<div ng-repeat="category in categories">
-			<h2>{[{ category }]}</h2>
-		</div>
-	</slick>	
-
+    <div class="select-news">
+        <div class="container-arrow">
+            <div class="arrow-left"></div>
+            <div class="arrow-right"></div>
+        </div>
+    </div>
     
-	<slick slides-to-show=3 slides-to-scroll=1 init-onload=true data="images">
-
-		<div ng-repeat="thing in images">
-			<div class="news">
-            	<div class="news-img"><img ng-src="{[{ images[$index] }]}"></div>
-            	<div class="title">{[{ titles[$index] }]}</div>
-            	<div class="date">{[{ dates[$index] | date }]}</div>
-            	<div class="description">{[{ descriptions[$index] }]}</div>
-        	</div>
-		</div>
-
-	</slick>
-	
 </section> 
 
 
