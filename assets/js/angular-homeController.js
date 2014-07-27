@@ -4,22 +4,14 @@
 
     angular.module('newSwipe.home').controller('HomeController', ['$scope', '$http','$timeout',function ($scope, $http, $timeout) {
 
-        // this.urlBase = 'http://feeds2.feedburner.com/thenextweb';
+        this.theNextWeb = 'http://feeds2.feedburner.com/thenextweb';
         this.mashableRSS = 'http://feeds.mashable.com/Mashable';
         this.awwwarsRSS = 'http://feeds.feedburner.com/awwwards-sites-of-the-day';
+        this.techCrunchRSS = 'http://feeds.feedburner.com/TechCrunch/';
+
         this.urlApiGoogle = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=';
 
         $scope.categories = ['Tecnología', 'Programación', 'Diseño ', 'Estrategia'];
-
-        $scope.onBeforeChange =  function() {
-            console.log("Hola Mundo");
-        };
-        // function cambio () {
-        //     console.log("Hola");
-        // };
-        // $scope.cambio = function (hola) {
-            // console.log("Cambiando");
-        // };
 
         $http.jsonp(this.urlApiGoogle + encodeURIComponent(this.mashableRSS))
             .success(function(data, status, headers, config) {
