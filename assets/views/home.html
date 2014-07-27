@@ -40,18 +40,18 @@
             </div>
         </slick>
 
-<!--         <div class="select-news">
+        <div class="select-news">
             <div class="container-arrow">
-                <div class="arrow-left {[{ activeC }]}"></div>
-                <div class="arrow-right {[{ activeC }]}"></div>
+                <div class="arrow-left {[{activeC.name}]}"></div>
+                <div class="arrow-right {[{activeC.name}]}"></div>
             </div>
-        </div> -->
+        </div>
         
         <slick ng-transclude settings="newsConfig" control="newsHandle">
             <div ng-repeat="new in news | limitTo:9">
                 <div class="container-news"> 
                     <div class="news">
-                        <div class="news-img" ng-class="{'tech': activeCategory === 'Tecnología', 'design': activeCategory === 'Diseño', 'back': activeCategory === 'Programación', 'strategy': activeCategory === 'Estrategia'}"><img ng-src="{[{ new.image }]}"></div>
+                        <div class="news-img {[{activeC.name}]}"><img ng-src="{[{ new.image }]}"></div>
                         <div class="title">{[{ new.title }]}</div>
                         <div class="date">{[{ new.publishedDate | date:'EEEE, MMMM d, y' }]}</div>
                         <div class="description">{[{ new.description }]}</div>

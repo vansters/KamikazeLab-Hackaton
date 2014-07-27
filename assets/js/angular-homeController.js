@@ -77,6 +77,7 @@
             },
             pauseOnHover: true,
             slidesToShow: 3,
+            vertical: false
         };
 
         $scope.categoriesHandle = {
