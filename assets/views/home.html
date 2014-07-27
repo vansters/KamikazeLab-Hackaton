@@ -1,8 +1,7 @@
 <!-- Home Page -->
 <section ng-controller="HomeController">
-	
+	<h1>Hola</h1>
 	<div ng-repeat="data in feedData | limitTo:3">
-
 		<h1>{[{ data.title }]}</h1>
 		<h3>{[{ data.author }]}</h3>
 		<h5>{[{ data.contentSnippet }]}</h5>
