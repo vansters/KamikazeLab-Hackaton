@@ -13,16 +13,16 @@
 
         $scope.catagoriesInfo = {
             tech:       [{'source': 'Mashable', 'url': 'http://feeds.mashable.com/Mashable'}, {'source': 'TechCrunch', 'url': 'http://feeds.feedburner.com/TechCrunch'}],
-            dev:        [{'source': 'Codrops',  'url': 'http://feeds2.feedburner.com/tympanus'}],
-            design:     [{'source': 'Awwwards - Sites of the day', 'url': 'http://feeds.feedburner.com/awwwards-sites-of-the-day'}],
-            strategy:   [{'source': 'Puro Marketing ',  'url': 'http://feeds.feedburner.com/puromarketing'}]
+            dev:        [{'source': 'Alt1040',  'url': 'http://feeds.hipertextual.com/alt1040'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/appleweblog-es'}],
+            design:     [{'source': 'TutsPlus', 'url': 'http://design.tutsplus.com/posts.atom'}],
+            strategy:   [{'source': 'Alt1040',  'url': 'http://feeds.feedburner.com/celularis'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/altfoto'}]
         }
 
         $scope.news = [];
 
 
         $scope.basicCategories = ['Tecnología', 'Programación', 'Diseño', 'Estrategia'];
-        // $scope.basicCategories = ['Tecnología'];
+        // $scope.basicCategories = ['Diseño'];
         $scope.categories = [];
 
         $scope.categoriesConfig = {
