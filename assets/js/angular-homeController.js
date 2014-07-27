@@ -12,10 +12,10 @@
         this.techCrunchRSS = 'http://feeds.feedburner.com/TechCrunch/';
 
         $scope.catagoriesInfo = {
-            tech:       [{'source': 'Mashable', 'url': 'http://feeds.mashable.com/Mashable'}, {'source': 'TechCrunch', 'url': 'http://feeds.feedburner.com/TechCrunch'}],
-            dev:        [{'source': 'Alt1040',  'url': 'http://feeds.hipertextual.com/alt1040'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/appleweblog-es'}],
-            design:     [{'source': 'TutsPlus', 'url': 'http://design.tutsplus.com/posts.atom'}],
-            strategy:   [{'source': 'Alt1040',  'url': 'http://feeds.feedburner.com/celularis'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/altfoto'}]
+            tech:       [{'source': 'mashable', 'url': 'http://feeds.mashable.com/Mashable'}, {'source': 'techCrunch', 'url': 'http://feeds.feedburner.com/TechCrunch'}],
+            dev:        [{'source': 'alt1040',  'url': 'http://feeds.hipertextual.com/alt1040'}, {'source': 'alt1040', 'url': 'http://feeds.hipertextual.com/appleweblog-es'}],
+            design:     [{'source': 'tutsPlus', 'url': 'http://design.tutsplus.com/posts.atom'}],
+            strategy:   [{'source': 'alt1040',  'url': 'http://feeds.feedburner.com/celularis'}, {'source': 'alt1040', 'url': 'http://feeds.hipertextual.com/altfoto'}]
         }
 
         $scope.news = [];
