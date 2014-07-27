@@ -18,11 +18,11 @@
             strategy:   [{'source': 'Puro Marketing ',  'url': 'http://feeds.feedburner.com/puromarketing'}]
         }
 
-        $scope.dat = [];
+        $scope.news = [];
 
 
-        // $scope.basicCategories = ['Tecnología', 'Programación', 'Diseño', 'Estrategia'];
-        $scope.basicCategories = ['Tecnología'];
+        $scope.basicCategories = ['Tecnología', 'Programación', 'Diseño', 'Estrategia'];
+        // $scope.basicCategories = ['Tecnología'];
         $scope.categories = [];
 
         $scope.categoriesConfig = {
@@ -98,15 +98,14 @@
                         $scope.titles.push(element.title);
                         $scope.dates.push(element.publishedDate);
                         $scope.descriptions.push(element.contentSnippet);
-                        $scope.dat.push({
+                        $scope.news.push({
                             'image': getImage(element.content),
                             'title': element.title,
-                            'source': source
+                            'source': source,
+                            'publishedDate': element.publishedDate,
+                            'description': element.contentSnippet
                         });
                     });
-                    console.log($scope.dat);
-                    // console.log(dat);
-                    // return dat;
                 });
 
         };

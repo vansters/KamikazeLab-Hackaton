@@ -21,37 +21,68 @@
     </div>
     
     <div class="container-news">
-        <div ng-repeat="data in feedData | limitTo:9">
-            <div class="news">
-                <div class="news-img"><img ng-src="{[{ data.img }]}"></div>
-                <div class="title">{[{ data.title }]}</div>
-                <div class="date">{[{ data.publishedDate | date }]}</div>
-                <div class="description">{[{ data.contentSnippet }]}</div>
+        <slick  ng-transclude settings="categoriesConfig" control="categoriesHandle">
+            <div ng-repeat="category in categories">
+                <div class="container-categories">
+                    <div class="categories design">
+                        <div class="icon"><img src="images/categories1.png"></div>
+                        <div class="title">{[{ category }]}</div>
+                        <div class="rss">Mashable | The Next Web | Smashing Magazine | Awwwards</div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </slick>
+        
+        <slick ng-transclude settings="newsConfig" control="newsHandle">
+            <div ng-repeat="new in news">
+                <div class="container-news"> 
+                    <div class="news">
+                        <div class="news-img design"><img ng-src="{[{ new.image }]}"></div>
+                        <div class="title">{[{ new.title }]}</div>
+                        <div class="date">{[{ new.publishedDate | date:'EEEE, MMMM d, y' }]}</div>
+                        <div class="description">{[{ new.description }]}</div>
+                        <div class="downloads">
+                            <img src="images/downloads.png">
+                            DESCARGADA <span>231</span> VECES
+                        </div>
+                        <div class="icon">
+                            <img src="images/mashable.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </slick> 
     </div>
 
-	<slick  ng-transclude settings="categoriesConfig" control="categoriesHandle">
-		<div ng-repeat="category in categories">
-			<h2>{[{ category }]}</h2>
-		</div>
-	</slick>	
+    <div class="select-news">
+        <div class="container-arrow">
+            <div class="arrow-left"></div>
+            <div class="arrow-right"></div>
+        </div>
+    </div>
+    
+</section> 
+
+
+<!--     <slick  ng-transclude settings="categoriesConfig" control="categoriesHandle">
+        <div ng-repeat="category in categories">
+            <h2>{[{ category }]}</h2>
+        </div>
+    </slick>     -->
 
     
-	<slick ng-transclude settings="newsConfig" control="newsHandle">
+<!--     <slick ng-transclude settings="newsConfig" control="newsHandle">
 
-		<div ng-repeat="d in dat">
-			<div class="news">
-            	<div class="news-img"><img ng-src="{[{ d.image }]}"></div>
-            	<div class="title">{[{ d.title }]}</div>
-            	<!-- <div class="date">{[{ dates[$index] | date }]}</div> -->
-            	<!-- <div class="description">{[{ descriptions[$index] }]}</div> -->
-        	</div>
-		</div>
+        <div ng-repeat="d in dat">
+            <div class="news">
+                <div class="news-img"><img ng-src="{[{ d.image }]}"></div>
+                <div class="title">{[{ d.title }]}</div>
+                <div class="date">{[{ dates[$index] | date }]}</div>
+                <div class="description">{[{ descriptions[$index] }]}</div>
+            </div>
+        </div>
 
-	</slick>
-
-</section> 
+    </slick> -->
 
 
 
