@@ -1,21 +1,26 @@
 <!-- Home Page -->
 <section ng-controller="HomeController">
+
+	<slick  slides-to-show=3 slides-to-scroll=1 init-onload=true data="categories">
+		<div ng-repeat="category in categories">
+			<h2>{[{ category }]}</h2>
+		</div>
+	</slick>	
+
     
-    <!-- <div ng-repeat="data in feedData | limitTo:1">
-        <div class="news">
-            <div class="news-img"><img ng-src="{[{ data.img }]}"></div>
-            <div class="title">{[{ data.title }]}</div>
-            <div class="date">{[{ data.publishedDate | date }]}</div>
-            <div class="description">{[{ data.contentSnippet }]}</div>
-        </div>
-    </div> -->
+	<slick slides-to-show=3 slides-to-scroll=1 init-onload=true data="images">
 
-    <slick class="slider single-item" current-index="index" responsive="breakpoints" center-mode=true slides-to-show=3 slides-to-scroll=3>
-      <div ng-repeat="data in loQueSea"><img ng-src="{[{ data }]}"/></div>
-    </slick>
+		<div ng-repeat="thing in images">
+			<div class="news">
+            	<div class="news-img"><img ng-src="{[{ images[$index] }]}"></div>
+            	<div class="title">{[{ titles[$index] }]}</div>
+            	<div class="date">{[{ dates[$index] | date }]}</div>
+            	<div class="description">{[{ descriptions[$index] }]}</div>
+        	</div>
+		</div>
 
-    <slick class="slider single-item" current-index="index" responsive="breakpoints" slides-to-show=3 slides-to-scroll=3>
-      <div ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]"><h3>{{ i }}</h3></div>
-    </slick>
+	</slick>
+
+
 
 </section>
