@@ -10,6 +10,8 @@
 		peer.on('open', function(id){
 			$('#pid').text(id);
 		});
+
+		$scope.stopDrag = false;
           
 		peer.on('connection', connect);
 
@@ -19,7 +21,8 @@
 			$('#rid').prop('disabled', true);
 			$('#progBar').width('100%');
 			conn.on('data',function(data){
-			 	$('#inputText').val($('#inputText').val()+data);
+				window.open(data,'_blank');
+				$scope.stopDrag = false;
 			});
 			conn.on('disconnect', disconnect);
 		}
@@ -48,8 +51,13 @@
 			conn.send("prevNew");
 		};
 
-		$scope.downNew =  function() {
-			alert("Down");
+		$scope.downNew =  function($event) {
+			if ($scope.stopDrag) {
+				return 0;
+			} else {
+				conn.send("downNew");
+				$scope.stopDrag = true;
+			}
 		};
 
 		$(document).ready(function(){
@@ -73,24 +81,3 @@
     }]);
 
 }());
-
-
-/*			$('#connect').click(function(){
-				var c = peer.connect('acb123');
-				c.on('open', function(){
-					connect(c);
-				});
-			});
-
-			$('#disconnect').click(function(){
-				$('#progBar').css('width', '50%');
-				disconnect();
-			});
-
-			$('#inputText').keypress(function(e){
-				var ev = e || window.event;
-				var asciiKey = ev.keyCode || ev.which;
-				var text = String.fromCharCode(asciiKey);
-				text = $('#inputText').val();
-				conn.send("categoryNext");
-			});*/

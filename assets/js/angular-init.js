@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('newSwipe', ['ngRoute', 'bardo.directives', 'ngTouch', 'newSwipe.home', 'newSwipe.mobile'], function($interpolateProvider) {
+angular.module('newSwipe', ['ngRoute', 'bardo.directives', 'ngTouch', 'angular-gestures','newSwipe.home', 'newSwipe.mobile'], function($interpolateProvider) {
 	$interpolateProvider.startSymbol('{[{');
     $interpolateProvider.endSymbol('}]}');
 });

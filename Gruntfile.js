@@ -162,11 +162,10 @@ module.exports = function (grunt) {
           { '.tmp/public/js/lib/angular-resource.min.js.map': './bower_components/angular-resource/angular-resource.min.js.map' },
           { '.tmp/public/js/lib/angular-touch.min.js': './bower_components/angular-touch/angular-touch.min.js' },
           { '.tmp/public/js/lib/angular-touch.min.js.map': './bower_components/angular-touch/angular-touch.min.js.map' },
-          { '.tmp/public/js/lib/angular-gesture.min.js': './bower_components/angular-touch/angular-touch.min.js' },
+          { '.tmp/public/js/lib/angular-gesture.min.js': './bower_components/angular-gestures/gestures.min.js' },
 
           { '.tmp/public/styles/lib/slick.css': './bower_components/slick-carousel/slick/slick.css' },
           { '.tmp/public/js/lib/slick.js': './bower_components/slick-carousel/slick/slick.js' },
-          { '.tmp/public/js/lib/angular-slick.js': './bower_components/angular-gestures/gestures.min.js' },
           
           { '.tmp/public/styles/animate.min.css': './bower_components/animate.css/animate.min.css'}
         ]

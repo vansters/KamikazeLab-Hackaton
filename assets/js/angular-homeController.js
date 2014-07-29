@@ -8,9 +8,9 @@
 
         $scope.catagoriesInfo = {
             tech:       [{'source': 'Mashable', 'url': 'http://feeds.mashable.com/Mashable'   }, {'source': 'TechCrunch', 'url': 'http://feeds.feedburner.com/TechCrunch'}],
-            dev:        [{'source': 'Alt1040',  'url': 'http://feeds.hipertextual.com/alt1040'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/appleweblog-es'}],
+            dev:        [{'source': 'Alt1040',  'url': 'http://feeds.hipertextual.com/alt1040'}, {'source': 'AppleWebBlog', 'url': 'http://feeds.hipertextual.com/appleweblog-es'}],
             design:     [{'source': 'TutsPlus', 'url': 'http://design.tutsplus.com/posts.atom'}],
-            strategy:   [{'source': 'Celularis',  'url': 'http://feeds.feedburner.com/celularis'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/altfoto'}]
+            strategy:   [{'source': 'Celularis',  'url': 'http://feeds.feedburner.com/celularis'}, {'source': 'AltFoto', 'url': 'http://feeds.hipertextual.com/altfoto'}]
         };
 
         $scope.news = [];
@@ -70,7 +70,16 @@
 
         //  News Slider Config & Controller
         $scope.newsConfig = {
-            slidesToShow: 3
+            slidesToShow: 3,
+            onAfterChange: function (event) {
+
+                if ( _.isUndefined($scope.news[event.currentSlide+1])) {
+                    $scope.activeN = 0;
+                } else {
+                    $scope.activeN = event.currentSlide+1;
+                }
+
+            }
         };
 
         $scope.newsHandle = { };
@@ -79,6 +88,7 @@
         $scope.initAplication = function () {
 
             $scope.activeC = $scope.categories[1];
+            $scope.activeN = 1;
             var x = $scope.activeC.name;
             var aux = $scope.catagoriesInfo[x];
             _.each(aux, function(element, index) {
@@ -99,7 +109,8 @@
                             'title': element.title,
                             'source': source,
                             'publishedDate': element.publishedDate,
-                            'description': element.contentSnippet
+                            'description': element.contentSnippet,
+                            'link': element.link
                         });
                     });
                 });
@@ -117,6 +128,7 @@
                         $scope.news[index].source = source;
                         $scope.news[index].publishedDate = element.publishedDate;
                         $scope.news[index].description = element.contentSnippet;
+                        $scope.news[index].link = element.link;
                     });
                 });
                 
@@ -168,7 +180,6 @@
         
         function connect(c){
             conn = c;
-            $scope.message = "Ahora estas conectado";
             conn.on('data',function(data){
                 checkCommand(data);
             });
@@ -194,7 +205,15 @@
                 case 'prevNew':
                     $('#prevNew').click();
                 break;
+                case 'downNew':
+                    sendURL();
+                break;
             }
+        }
+
+        function sendURL (data) {
+            conn.send($scope.news[$scope.activeN].link);
+            conn.on('disconnect', disconnect);
         }
 
       function makeid() {
