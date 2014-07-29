@@ -48,6 +48,10 @@
 			conn.send("prevNew");
 		};
 
+		$scope.downNew =  function() {
+			alert("Down");
+		};
+
 		$(document).ready(function(){
 			var c = peer.connect('acb123');
 			c.on('open', function(){
