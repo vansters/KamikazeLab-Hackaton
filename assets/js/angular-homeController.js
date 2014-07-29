@@ -10,7 +10,7 @@
             tech:       [{'source': 'Mashable', 'url': 'http://feeds.mashable.com/Mashable'   }, {'source': 'TechCrunch', 'url': 'http://feeds.feedburner.com/TechCrunch'}],
             dev:        [{'source': 'Alt1040',  'url': 'http://feeds.hipertextual.com/alt1040'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/appleweblog-es'}],
             design:     [{'source': 'TutsPlus', 'url': 'http://design.tutsplus.com/posts.atom'}],
-            strategy:   [{'source': 'Alt1040',  'url': 'http://feeds.feedburner.com/celularis'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/altfoto'}]
+            strategy:   [{'source': 'Celularis',  'url': 'http://feeds.feedburner.com/celularis'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/altfoto'}]
         };
 
         $scope.news = [];
@@ -70,9 +70,6 @@
 
         //  News Slider Config & Controller
         $scope.newsConfig = {
-            // autoplay: true,
-            // autoplaySpeed: 10000,
-            // pauseOnHover: true,
             slidesToShow: 3
         };
 
@@ -117,7 +114,7 @@
                     _.each(x, function(element, index) {
                         $scope.news[index].image = getImage(element.content);
                         $scope.news[index].title = element.title;
-                        $scope.news[index].source = element.source;
+                        $scope.news[index].source = source;
                         $scope.news[index].publishedDate = element.publishedDate;
                         $scope.news[index].description = element.contentSnippet;
                     });
