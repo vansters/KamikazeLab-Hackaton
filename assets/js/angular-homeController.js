@@ -4,7 +4,6 @@
 
     angular.module('newSwipe.home').controller('HomeController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
 
-        $scope.newSlider = '<div ng-click="datelas()"> n_n </div>';
         $scope.urlApiGoogle = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=';
 
         $scope.catagoriesInfo = {
@@ -12,10 +11,6 @@
             dev:        [{'source': 'Alt1040',  'url': 'http://feeds.hipertextual.com/alt1040'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/appleweblog-es'}],
             design:     [{'source': 'TutsPlus', 'url': 'http://design.tutsplus.com/posts.atom'}],
             strategy:   [{'source': 'Alt1040',  'url': 'http://feeds.feedburner.com/celularis'}, {'source': 'Alt1040', 'url': 'http://feeds.hipertextual.com/altfoto'}]
-        };
-
-        $scope.datelas = function() {
-            alert("funciona");
         };
 
         $scope.news = [];
@@ -62,7 +57,7 @@
                 if($scope.catagoriesInfo.hasOwnProperty(x) ){
                     var aux = $scope.catagoriesInfo[x];
                     _.each(aux, function(element, index) {
-                        $scope.getSourceRss(element.url, element.source, true);
+                        $scope.getSourceRssUpdate(element.url, element.source);
                     });
                 }
 
@@ -75,13 +70,10 @@
 
         //  News Slider Config & Controller
         $scope.newsConfig = {
-            autoplay: true,
-            autoplaySpeed: 10000,
-            pauseOnHover: true,
-            slidesToShow: 3,
-            onBeforeChange: function  (event) {
-                console.log(event);
-            },
+            // autoplay: true,
+            // autoplaySpeed: 10000,
+            // pauseOnHover: true,
+            slidesToShow: 3
         };
 
         $scope.newsHandle = { };
@@ -93,42 +85,57 @@
             var x = $scope.activeC.name;
             var aux = $scope.catagoriesInfo[x];
             _.each(aux, function(element, index) {
-                $scope.getSourceRss(element.url, element.source, false);
+                $scope.getSourceRss(element.url, element.source);
             });
 
         };
 
-        $scope.getSourceRss = function( url, source, mode) {
+        $scope.getSourceRss = function( url, source) {
 
             $http.jsonp($scope.urlApiGoogle + encodeURIComponent(url))
                 .success(function(data, status, headers, config) {
                     var x = data.responseData.feed.entries;
-                    // $scope.news = [];
-                    $scope.newsN = [];
+                    $scope.news = [];
                     _.each(x, function(element, index) {
-                        $scope.newsN.push({
+                        $scope.news.push({
                             'image': getImage(element.content),
                             'title': element.title,
                             'source': source,
                             'publishedDate': element.publishedDate,
                             'description': element.contentSnippet
                         });
-                        if (mode) {
-                            $('#remove').click();
-                            $scope.news.shift();
-                        };
                     });
-                    $scope.news = $scope.newsN;
                 });
 
+        };
+
+        $scope.getSourceRssUpdate = function(url, source, mode) {
+
+            $http.jsonp($scope.urlApiGoogle + encodeURIComponent(url))
+                .success(function(data, status, headers, config) {
+                    var x = data.responseData.feed.entries;
+                    _.each(x, function(element, index) {
+                        $scope.news[index].image = getImage(element.content);
+                        $scope.news[index].title = element.title;
+                        $scope.news[index].source = element.source;
+                        $scope.news[index].publishedDate = element.publishedDate;
+                        $scope.news[index].description = element.contentSnippet;
+                    });
+                });
+                
         };
 
 
 
         function getImage (contentString) {
 
-            var aux = $(contentString);
-            return $(aux[0]).attr("src");
+            try {
+                var aux = $(contentString);
+                return $(aux[0]).attr("src");
+            }
+            catch(err) {
+                return ""
+            }
 
         };
 

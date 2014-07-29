@@ -9,12 +9,6 @@
     <button id="prevNew" ng-click="newsHandle.slickPrev()" ng-show="false"></button>
     <button id="goToS" ng-click="newsHandle.slickGoTo(index)" ng-show="false"></button>
 
-    <button id="remove" ng-click="newsHandle.slickRemove(0)" ng-show="true">Eliminar</button>
-    <button id="addhd" ng-click='newsHandle.slickAdd(newSlider)' ng-show="true">add</button>
-    <button id="adfdgdgd" ng-click='datelas()' ng-show="true">Datelas</button>
-    <button id="jghj" ng-click='newsHandle.unslick' ng-show="true">Bye</button>
-
-    unslick
     <div class="header">
         <div class="logo">
             <img src="images/logo.png">
@@ -54,7 +48,7 @@
         </div>
         
         <slick ng-transclude settings="newsConfig" control="newsHandle">
-            <div ng-repeat="new in news | limitTo:6">
+            <div ng-repeat="new in news">
                 <div class="container-news"> 
                     <div class="news">
                         <div class="news-img {[{activeC.name}]}"><img ng-src="{[{ new.image }]}"></div>
@@ -77,6 +71,28 @@
     
 </section> 
 
+
+
+<!--         <slick ng-transclude settings="newsConfig" control="newsHandle">
+            <div ng-repeat="new in news">
+                <div class="container-news"> 
+                    <div class="news">
+                        <div class="news-img {[{activeC.name}]}"><img ng-src="{[{ new.image }]}"></div>
+                        <div class="title">{[{ new.title }]}</div>
+                        <div class="date">{[{ new.publishedDate | date:'EEEE, MMMM d, y' }]}</div>
+                        <div class="description">{[{ new.description }]}</div>
+                        <div class="downloads">
+                            <img src="images/downloads.png">
+                            DESCARGADA <span>231</span> VECES
+                        </div>
+                        <div class="icon">
+                            <img src="images/techCrunch.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </slick> -->
+        
 
 
 
