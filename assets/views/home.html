@@ -9,6 +9,12 @@
     <button id="prevNew" ng-click="newsHandle.slickPrev()" ng-show="false"></button>
     <button id="goToS" ng-click="newsHandle.slickGoTo(index)" ng-show="false"></button>
 
+    <button id="remove" ng-click="newsHandle.slickRemove(0)" ng-show="true">Eliminar</button>
+    <button id="addhd" ng-click='newsHandle.slickAdd(newSlider)' ng-show="true">add</button>
+    <button id="adfdgdgd" ng-click='datelas()' ng-show="true">Datelas</button>
+    <button id="jghj" ng-click='newsHandle.unslick' ng-show="true">Bye</button>
+
+    unslick
     <div class="header">
         <div class="logo">
             <img src="images/logo.png">
@@ -28,7 +34,7 @@
     </div>
     
     <div class="container-news">
-        <slick  ng-transclude settings="categoriesConfig" control="categoriesHandle">
+        <slick  ng-transclude settings="categoriesConfig" control="categoriesHandle" on-directive-init="datelas">
             <div ng-repeat="category in categories">
                 <div class="container-categories">
                     <div class="categories {[{category.name}]}">
@@ -48,7 +54,7 @@
         </div>
         
         <slick ng-transclude settings="newsConfig" control="newsHandle">
-            <div ng-repeat="new in news | limitTo:9">
+            <div ng-repeat="new in news | limitTo:6">
                 <div class="container-news"> 
                     <div class="news">
                         <div class="news-img {[{activeC.name}]}"><img ng-src="{[{ new.image }]}"></div>
@@ -68,36 +74,8 @@
         </slick> 
     </div>
 
-    <!-- <div class="select-news">
-        <div class="container-arrow">
-            <div class="arrow-left"></div>
-            <div class="arrow-right"></div>
-        </div>
-    </div> -->
     
 </section> 
-
-
-<!--     <slick  ng-transclude settings="categoriesConfig" control="categoriesHandle">
-        <div ng-repeat="category in categories">
-            <h2>{[{ category }]}</h2>
-        </div>
-    </slick>     -->
-
-    
-<!--     <slick ng-transclude settings="newsConfig" control="newsHandle">
-
-        <div ng-repeat="d in dat">
-            <div class="news">
-                <div class="news-img"><img ng-src="{[{ d.image }]}"></div>
-                <div class="title">{[{ d.title }]}</div>
-                <div class="date">{[{ dates[$index] | date }]}</div>
-                <div class="description">{[{ descriptions[$index] }]}</div>
-            </div>
-        </div>
-
-    </slick> -->
-
 
 
 

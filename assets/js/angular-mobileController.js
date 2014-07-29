@@ -49,7 +49,29 @@
 		};
 
 		$(document).ready(function(){
-			$('#connect').click(function(){
+			var c = peer.connect('acb123');
+			c.on('open', function(){
+				connect(c);
+			});
+
+		});
+
+		function makeid() {
+			var text = "";
+			var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
+			// var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+			for( var i=0; i < 5; i++ ) {
+			  text += possible.charAt(Math.floor(Math.random() * possible.length));
+			}
+			  return text;
+		};
+
+    }]);
+
+}());
+
+
+/*			$('#connect').click(function(){
 				var c = peer.connect('acb123');
 				c.on('open', function(){
 					connect(c);
@@ -67,79 +89,4 @@
 				var text = String.fromCharCode(asciiKey);
 				text = $('#inputText').val();
 				conn.send("categoryNext");
-			});
-
-		});
-
-
-
-		function makeid() {
-			var text = "";
-			var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
-			// var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-			for( var i=0; i < 5; i++ ) {
-			  text += possible.charAt(Math.floor(Math.random() * possible.length));
-			}
-			  return text;
-		};
-
-    	// var conn,
-     //        peer = new Peer( makeid() , { key: 'zgy87w70m620529' } );
-  
-     //    peer.on('open', function(id){
-     //        $scope.idChannel = id;
-     //    });
-      
-     //    peer.on('connection', connect);
-        
-     //    function connect(c){
-     //        conn = c;
-     //        $scope.message = "Ahora estas conectado";
-     //        conn.on('data',function(data){
-     //            console.log("Ahora tenemos data :: " + data);
-     //            // $('#inputText').val($('#inputText').val()+data);
-     //        });
-     //        conn.on('disconnect', disconnect);
-     //    }
-
-     //    function disconnect(){
-     //        alert("Ahora esta libre");
-     //    }
-
-     //  $(document).ready(function(){
-     //    $('#connect').click(function(){
-     //      $('#progBar').css('width', '50%');
-     //      var c = peer.connect($('#rid').val());
-     //      c.on('open', function(){
-     //        connect(c);
-     //      });
-     //    });
-     //    $('#disconnect').click(function(){
-     //      $('#progBar').css('width', '50%');
-     //      disconnect();
-     //    });
-     //    $('#inputText').keypress(function(e){
-     //      var ev = e || window.event;
-     //      var asciiKey = ev.keyCode || ev.which;
-     //      text = String.fromCharCode(asciiKey);
-     //      //text = $('#inputText').val();
-     //      conn.send(text);
-     //    });
-
-     //  });
-
-     //  function makeid() {
-     //    var text = "";
-     //    var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
-     //    // var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-     //    for( var i=0; i < 5; i++ ) {
-     //      text += possible.charAt(Math.floor(Math.random() * possible.length));
-     //    }
-     //      return text;
-     //  };
-
-
-
-    }]);
-
-}());
+			});*/
