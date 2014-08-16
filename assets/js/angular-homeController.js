@@ -7,6 +7,7 @@
         $scope.urlApiGoogle = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=';
 
         $scope.catagoriesInfo = {
+            femexfut:       [{'source': 'Femexfut', 'url': 'http://miseleccion.mx/feed/'}],
             tech:       [{'source': 'Mashable', 'url': 'http://feeds.mashable.com/Mashable'   }, {'source': 'TechCrunch', 'url': 'http://feeds.feedburner.com/TechCrunch'}],
             dev:        [{'source': 'Alt1040',  'url': 'http://feeds.hipertextual.com/alt1040'}, {'source': 'AppleWebBlog', 'url': 'http://feeds.hipertextual.com/appleweblog-es'}],
             design:     [{'source': 'TutsPlus', 'url': 'http://design.tutsplus.com/posts.atom'}],
@@ -20,6 +21,11 @@
                 "name": "strategy",
                 "text": "Estrategia",
                 "img": "images/icon-strategy.png"
+            },
+            {
+                "name": "femexfut",
+                "text": "Mi Selección",
+                "img": "images/icon-fut.png"
             },
             {
                 "name": "tech",
