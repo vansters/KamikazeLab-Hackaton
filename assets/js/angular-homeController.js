@@ -18,9 +18,9 @@
 
         $scope.categories = [
             {
-                "name": "strategy",
-                "text": "Estrategia",
-                "img": "images/icon-strategy.png"
+                "name": "design",
+                "text": "Diseño",
+                "img": "images/icon-design.png"
             },
             {
                 "name": "femexfut",
@@ -33,9 +33,9 @@
                 "img": "images/icon-tech.png"
             },
             {
-                "name": "design",
-                "text": "Diseño",
-                "img": "images/icon-design.png"
+                "name": "strategy",
+                "text": "Estrategia",
+                "img": "images/icon-strategy.png"
             },
             {
                 "name": "dev",
